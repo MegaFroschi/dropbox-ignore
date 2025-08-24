@@ -61,9 +61,12 @@ Patterns are evaluated relative to the chosen `-Root`.
 ## Typical `.ignoredropbox`
 
 ```gitignore
+# Dropbox defaults
+/.dropbox.cache
+
 # Common junk
-*.log
-*.tmp
+_.log
+_.tmp
 
 # Packages & build output
 node_modules/
@@ -71,15 +74,6 @@ dist/
 
 # Root-only
 /.env
-/dist/
-
-# IDE
-.vscode/
-*.user
-*.suo
-
-# Re-include a specific file
-!src/keepme.log
 ```
 
 ## What the script actually does
@@ -108,6 +102,7 @@ Summary reflects what would happen.
 -   **Dropbox behavior:** once a directory is flagged ignored, Dropbox ignores its contents automatically.
 -   **Symlinks/junctions:** reparse points are **skipped** by default. Use `-Unsafe` to include them in traversal.
 -   **Performance:** first run scans everything; subsequent runs are fast and usually silent.
+-   **Processing:** not reactive. Adding or removing files/folders, or editing `.ignoredropbox`, requires re-running the script. Keep in mind: if you delete and recreate an already ignored file or folder, the Dropbox ignore flag is lost and the script must be rerun for this also.
 
 ## Troubleshooting
 
