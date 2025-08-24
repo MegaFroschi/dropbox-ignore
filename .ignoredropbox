@@ -1,0 +1,13 @@
+# Dropbox defaults
+/.dropbox.cache
+
+# Common junk
+_.log
+_.tmp
+
+# Packages & build output
+node_modules/
+dist/
+
+# Root-only
+/.env
